@@ -1,6 +1,6 @@
 # Customer Churn Prediction – Telecom
 
-This project implements a machine learning pipeline to predict customer churn in a telecom context.For this project, the TELCO dataset simulated by IBM is used. The dataset was automatically
+This project implements a machine learning pipeline to predict customer churn in a telecom context.For this project, the TELCO dataset simulated by IBM is used. The dataset was automatically download via kagglehub.
 
 ## Project overview
 - Binary churn prediction using a Random Forest classifier
