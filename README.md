@@ -1,6 +1,6 @@
 # Customer Churn Prediction – Telecom
 
-This project implements a machine learning pipeline to predict customer churn in a telecom context.For this project, the TELCO dataset simulated by IBM is used.
+This project implements a machine learning pipeline to predict customer churn in a telecom context.For this project, the TELCO dataset simulated by IBM is used. The dataset was automatically
 
 ## Project overview
 - Binary churn prediction using a Random Forest classifier
@@ -33,7 +33,16 @@ python src/train.py
 ```bash
 docker compose up --build
 ```
+### 3. Load the llm from ollama
+```bash
+docker compose exec ollama ollama pull qwen2.5:1.5b
+```
 ### 3. Launch the streamlit app
 ```bash
 streamlit run streamlit_app.py
 ```
+## Usage / Notes importantes
+
+After entering the client's information and clicking the "Predict churn" button, the system will generate a prediction and explanation.  
+⚠️ Please note: Because we are using a lightweight LLM model (qwen1.5:1b) with limited computational resources, the explanation may take **around 1 minute** to be generated.  
+The churn prediction itself is fast, but the explanation requires additional processing time.

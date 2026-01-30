@@ -1,7 +1,7 @@
 import requests
 
 OLLAMA_URL = "http://ollama:11434/api/generate"
-MODEL = "qwen2.5:3b"
+MODEL = "qwen2.5:1.5b"
 
 def explain_churn(churn_proba, features: dict) -> str:
     prompt = f"""
@@ -31,8 +31,6 @@ Rules:
 Examples:
 1. "This client presents a low churn probability. Given this contract, monthly and total charges, improving their experience could include upgrading service options and offering personalized guidance."
 2. "This client shows high churn risk. Because of this short tenure and month-to-month contract, retention actions include offering incentives and personalized support."
-
-
 """
 
     payload = {
@@ -46,14 +44,27 @@ Examples:
         }   
     }
 
-    response = requests.post(OLLAMA_URL, json=payload, timeout=180)
+    try:
+        response = requests.post(OLLAMA_URL, json=payload, timeout=180)
 
-    if response.status_code != 200:
-        return f"LLM error {response.status_code}: {response.text}"
+        if response.status_code != 200:
+            return f"Try again please ! Error : {response.status_code}: {response.text}"
 
-    data = response.json()
+        data = response.json()
 
-    if "response" not in data:
-        return f"Unexpected LLM output: {data}"
+        if "response" not in data:
+            return f"Unexpected LLM output: {data}"
 
-    return data["response"]
+        return data["response"]
+
+    except requests.exceptions.RequestException:
+        # Message conditionnel selon le churn probability
+        risk_phrase = (
+            "This client presents a low risk of churn."
+            if churn_proba < 0.5
+            else "This client presents a high risk of churn."
+        )
+        return (
+            f"{risk_phrase} Prediction was generated successfully, "
+            "but the explanation service is temporarily unavailable."
+        )
