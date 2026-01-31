@@ -7,8 +7,6 @@ scipy>=1.10
 scikit-learn>=1.3
 xgboost>=2.0
 
-# Recommandation
-implicit>=0.7
 
 # API & Backend
 fastapi>=0.110

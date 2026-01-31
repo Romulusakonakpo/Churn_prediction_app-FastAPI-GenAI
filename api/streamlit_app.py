@@ -17,6 +17,7 @@ st.markdown(
     <style>
     .stApp {
         background-color: #f5f7fa;
+        color: white;
     }
     .block-container {
         padding-top: 2rem;
@@ -29,6 +30,11 @@ st.markdown(
     .metric-value {
         font-size: 28px !important;
         font-weight: bold !important;
+    }
+    /* ✅ TEXTE DU BOUTON EN ROUGE */
+    div.stButton > button {
+        color: red !important;
+        font-weight: bold;
     }
     </style>
     """,
@@ -46,10 +52,7 @@ def add_background(image_file):
         .stApp {{
             background-image: url("data:image/jpg;base64,{encoded}");
             background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: rgba(0,0,0,0.2);
-            background-blend-mode: multiply;
+            background-position: center
         }}
         </style>
         """,

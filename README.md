@@ -20,26 +20,32 @@ The final model which is `RandomForestClassifier` uses the five most important f
 This choice reduces bias introduced by missing or imputed variables while maintaining strong predictive performance (`AUC = 0.83` instead 0.84 by including all variables).
 
 ## How to run
-
-### 0. Install the requirements
+### 0. Create your own environnment (optional but I recommend) 
+For creating your env, you have the choice, either use conda or venv
 ```bash
-pip install -r requirements
+Conda create -n name_env python=3.11 -c conda-forge
+Conda activate name_env
 ```
-### 1. Train the model
+
+### 1. Install the requirements
+```bash
+pip install -r requirements.txt
+```
+### 2. Train the model
 ```bash
 python src/train.py
 ```
-### 2. Launch docker container
+### 3. Launch docker container
 ```bash
 docker compose up --build
 ```
-### 3. Load the llm from ollama
+### 4. Load the llm from ollama
 ```bash
 docker compose exec ollama ollama pull qwen2.5:1.5b
 ```
-### 3. Launch the streamlit app
+### 5. Launch the streamlit app
 ```bash
-streamlit run streamlit_app.py
+streamlit run api/streamlit_app.py
 ```
 ## Usage / Notes importantes
 
