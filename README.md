@@ -2,6 +2,8 @@
 
 This project implements a machine learning pipeline to predict customer churn in a telecom context.For this project, the TELCO dataset simulated by IBM is used. The dataset was automatically download via kagglehub.
 
+The full project, the files and any other necessary files to run the project are available on this repo : https://github.com/Romulusakonakpo/Churn_prediction_app-FastAPI-GenAI
+
 ## Project overview
 - Binary churn prediction using a Random Forest classifier
 - Feature engineering and preprocessing with scikit-learn
@@ -52,3 +54,8 @@ streamlit run api/streamlit_app.py
 After entering the client's information and clicking the "Predict churn" button, the system will generate a prediction and explanation.  
 ⚠️ Please note: Because we are using a lightweight LLM model (qwen1.5:1b) with limited computational resources, the explanation may take **around 1 minute** to be generated.  
 The churn prediction itself is fast, but the explanation requires additional processing time.
+
+## Collaborators 
+ - Sedjro AKONAKPO
+ - Noelie KOOVI
+ - Sonagnon KOUKPONOU
